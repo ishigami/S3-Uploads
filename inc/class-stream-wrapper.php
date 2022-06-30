@@ -198,24 +198,24 @@ class Stream_Wrapper {
 		);
 	}
 
-    /**
-     * Add this method do make this plugin compatible with roots/sage theme
+	/**
+	 * Add this method do make this plugin compatible with roots/sage theme
 	 *
 	 * @return bool
-     */
-    public function stream_set_option(int $option, int $arg1, int $arg2)
-    {
-        switch ($option) {
-            case STREAM_OPTION_BLOCKING:
-                return stream_set_blocking($this->context, $arg1);
-            case STREAM_OPTION_READ_TIMEOUT:
-                return stream_set_timeout($this->context, $arg1, $arg2);
-            case STREAM_OPTION_WRITE_BUFFER:
-                return stream_set_write_buffer($this->context, $arg2);
-            default:
-                return false;
-        }
-    }
+	 */
+	public function stream_set_option(int $option, int $arg1, int $arg2)
+	{
+		switch ($option) {
+			case STREAM_OPTION_BLOCKING:
+				return stream_set_blocking($this->context, $arg1);
+			case STREAM_OPTION_READ_TIMEOUT:
+				return stream_set_timeout($this->context, $arg1, $arg2);
+			case STREAM_OPTION_WRITE_BUFFER:
+				return stream_set_write_buffer($this->context, $arg2);
+			default:
+				return false;
+		}
+	}
 
 	public function stream_eof() : bool {
 		if ( ! $this->body ) {
